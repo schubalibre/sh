@@ -1,4 +1,4 @@
-if test !$1 -o !$2 -o !$3
+if [ $# -lt 3 ]
 then 
 	echo "Bitte geben Sie eine Frage in der Form 'Fage? Ja Nein' an!"
 	exit >&2 
@@ -15,7 +15,7 @@ do
 		echo "0"
 		exit
 	
-	elif [ $3 = $a ]
+	elif [ $3 = $userAntwort ]
 	then
 		echo "1"
 		exit
