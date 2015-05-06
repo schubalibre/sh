@@ -6,7 +6,7 @@ fi
 
 while true
 do
-	echo "$1 [$2/$3]"
+	echo "$1 $2 $3"
 
 	read ANTWORT
 	

@@ -36,6 +36,7 @@ for FILE in $FILES
 do
 	./frage.sh "Soll $FILE gesichert werden?" "y" "n"
 	ANTWORT=$?
+echo $ANTWORT
 	if [ $ANTWORT = 0  ]
 	then
 		cp $FILE "$DIRECTORY"
@@ -43,5 +44,5 @@ do
 	fi
 done
 
-echo "Alles klar, Ihre Dtaen wurden gesichert."
+echo "Alles klar, Ihre Dtaen wurden gesichert"
 
