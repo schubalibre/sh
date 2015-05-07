@@ -1,23 +1,21 @@
 if [ $# -lt 3 ]
 then 
-	echo "Bitte geben Sie eine Frage in der Form 'Fage? Ja Nein' an!"
+	echo "Bitte geben Sie eine Frage in der Form '\"Fage?\" \"Ja\" \"Nein\"' an!"
 	exit >&2 
 fi
 
 while true
 do
-	echo "$1"
+	echo "$1 [$2/$3]"
 
-	read userAntwort
+	read ANTWORT
 	
-	if [ $2 = $userAntwort ]
+	if [ $2 = $ANTWORT ]
 	then 
-		echo "0"
-		exit
+		exit >&1 "0"
 	
-	elif [ $3 = $userAntwort ]
+	elif [ $3 = $ANTWORT ]
 	then
-		echo "1"
-		exit
+		exit >&1 "1"
 	fi
 done
