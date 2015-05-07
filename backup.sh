@@ -1,11 +1,10 @@
 cwd=$(pwd)
 surfix=$1
 files=$(find . -type f -name "*.$surfix")
-existiertBackupOrdner=false
+existiertBackupOrdner=0
 backupOrdner=backup
 
-
-echo "Herzlich Wiillkommen. Bitte bestätigen Sie mit 'y' wenn Sie ihre Datei backupen wollen!"
+echo "Herzlich Willkommen. Bitte bestätigen Sie mit 'y' wenn Sie ihre Datei backupen wollen!"
 
 if [  ${#surfix} -eq 0 ]
 then
@@ -23,9 +22,15 @@ for file in $(ls)
 do
 	if [ $file = "$backupOrdner" ]
 	then
-		$existiertBackupOrdner=true;
+		$existiertBackupOrdner=1
 	fi
 done
+echo -d /tmp
+if [ ls -d /tmp ] 
+then
+	echo 'Directory /tmp not found'
+fi
+
 echo $existiertBackupOrdner
 if [ !$existiertBackupOrdner ]
 then
@@ -33,7 +38,7 @@ then
 	read eingabe
 	if [ "y" = $eingabe ]
 	then
-		mkdir "$backupOrdner"
+		mkdir -p "$backupOrdner"
 		echo "Ordner erstellt..."
 	else
 		exit >&2
@@ -47,7 +52,7 @@ do
 	read a
 	if [ "y" = $a  ]
 	then
-		cp $file "$backupOrdner"
+		cp $file "$backupOrdner"/$file
 		echo "$file ...gespeichert..."
 	fi
 done
