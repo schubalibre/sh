@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+cwd=$(pwd)
+surfix=$1
+files=$(find . -type f -name "*.$surfix")
+existiertBackupOrdner=0
+backupOrdner=backup
+
+echo "Herzlich Willkommen. Bitte bestätigen Sie mit 'y' wenn Sie ihre Datei backupen wollen!"
+
+if [  ${#surfix} -eq 0 ]
+=======
 SUFFIX=$1
 # maxdepth wie viele Level
 # type -f nur Files
@@ -8,6 +19,7 @@ DIRECTORY=backup
 echo "Herzlich Willkommen. Mit diesem Programm können sie eine Sicherheitskopie ihrer Daten erstellen!"
 
 if [  ${#SUFFIX} -eq 0 ]
+>>>>>>> 8a8bf1842e10b8e6e6e880efed339e411e217f06
 then
     echo "Es muss ein Suffix angegeben werden! z.B. txt, jpg oder php"
     exit >&2
@@ -19,6 +31,33 @@ then
     exit >&2
 fi
 
+<<<<<<< HEAD
+for file in $(ls)
+do
+	if [ $file = "$backupOrdner" ]
+	then
+		$existiertBackupOrdner=1
+	fi
+done
+echo -d /tmp
+if [ ls -d /tmp ] 
+then
+	echo 'Directory /tmp not found'
+fi
+
+echo $existiertBackupOrdner
+if [ !$existiertBackupOrdner ]
+then
+	echo "Soll ein backup Ordner erstellt werden? y/n"
+	read eingabe
+	if [ "y" = $eingabe ]
+	then
+		mkdir -p "$backupOrdner"
+		echo "Ordner erstellt..."
+	else
+		exit >&2
+	fi
+=======
 if [ ! -d "$DIRECTORY" ];
 then
     ./frage.sh "Soll ein $DIRECTORY Ordner angelegt werden?" "y" "n"
@@ -30,10 +69,20 @@ then
     else
         exit >&2
     fi
+>>>>>>> 8a8bf1842e10b8e6e6e880efed339e411e217f06
 fi
 
 for FILE in $FILES
 do
+<<<<<<< HEAD
+	echo "Soll $file gebackupt werden?" 
+	read a
+	if [ "y" = $a  ]
+	then
+		cp $file "$backupOrdner"/$file
+		echo "$file ...gespeichert..."
+	fi
+=======
     ./frage.sh "Soll $FILE gesichert werden?" "y" "n"
     ANTWORT=$?
     if [ $ANTWORT = 0  ]
@@ -41,8 +90,8 @@ do
         cp $FILE "$DIRECTORY"
         echo "$FILE in ./$DIRECTORY gespeichert"
     fi
+>>>>>>> 8a8bf1842e10b8e6e6e880efed339e411e217f06
 done
 
 echo "Alles klar, Ihre Daten wurden gesichert."
-
 
