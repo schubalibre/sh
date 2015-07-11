@@ -1,7 +1,7 @@
 files=$(ls)
 
 for el in $files
-do 
+do
 	l=$(echo -n $el | wc -m)
 
 	if [ $l -ge 3 -a $l -lt 6 ]
